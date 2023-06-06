@@ -360,3 +360,102 @@
 
 </beans>
 ```
+
+#### Config applicationContext.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+    
+    <context:annotation-config/>
+    
+    <tx:annotation-driven/>
+
+    <context:component-scan base-package="id.ac.campus.spring"/>
+    
+    <context:property-placeholder location="classpath:configuration.properties" />
+	
+	<!-- Local-DB BEGIN -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+        p:driverClassName="${jdbc.driverClassName}"
+        p:url="${jdbc.url}"
+        p:username="${jdbc.username}"
+        p:password="${jdbc.password}"
+        p:initialSize="2"
+        p:maxActive="50"
+        p:maxIdle="15"
+        p:minIdle="3"
+        p:maxWait="30000"
+        p:removeAbandoned="true"
+        p:removeAbandonedTimeout="30"
+        p:validationQuery="SELECT 1"/>
+        
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+        p:dataSource-ref="dataSource"
+        p:configLocation="classpath:hibernate.cfg.xml">
+        <property name="hibernateProperties">
+            <props>
+            	<prop key="hibernate.cache.use_second_level_cache">true</prop>
+            	<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+            	<prop key="hibernate.jdbc.batch_size">15</prop>
+            	<prop key="hibernate.jdbc.fetch_size">1000</prop>
+            	<prop key="hibernate.max_fetch_depth">30</prop>
+            	<prop key="hibernate.order_inserts">true</prop>
+            	<prop key="hibernate.order_updates">true</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <!-- p:sessionFactory-ref="sessionFactory"> -->
+        <property name = "sessionFactory" ref = "sessionFactory" />
+    </bean>
+    <!-- Local-DB END -->
+    
+</beans>
+```
+
+#### Config hibernate.cfg.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+		<!-- remove on production -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">false</property>
+		
+		<!-- Entity Mapping -->
+		<mapping class="id.ac.campus.spring.entity.TblActivityLog" />
+		
+	</session-factory>
+</hibernate-configuration>
+```
+
+#### Config configuration.properties
+```xml
+# Application
+app.url = http://localhost:8080/SpringWebMVC01/
+
+# PostgreSQL Driver Setup
+jdbc.driverClassName    = org.postgresql.Driver
+jdbc.url                = jdbc:postgresql://localhost:5432/yourdatabasename
+jdbc.username           = postgres
+jdbc.password 		= yourpassword
+```
