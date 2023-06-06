@@ -1,6 +1,6 @@
 # Java Development Tools for Preparation
 
-## Spring MVC with Database Config
+## Spring MVC with Database
 * Project name : SpringWebMVC01
 * JDK Runtime : 1.7.0_80
 * Web Server : Apache Tomcat 8.5.0
@@ -8,9 +8,9 @@
 * Library : Spring Framework, Hibernate ORM, Joda Time, Servlet API 2.5, Encryptable Properties
 * Dependency Management : Maven
 
-
+## Configuration
 <details>
-<summary>Config pom.xml</summary>
+<summary>pom.xml</summary>
 	
 #### Code
 ```xml
@@ -278,7 +278,7 @@
 </details>
 
 <details>
-<summary>Config web.xml</summary>
+<summary>web.xml</summary>
 	
 #### Code
 ```xml
@@ -328,7 +328,7 @@
 </details>
 
 <details>
-<summary>Config dispatcher-servlet.xml</summary>
+<summary>dispatcher-servlet.xml</summary>
 	
 #### Code
 ```xml
@@ -375,7 +375,7 @@
 </details>
 
 <details>
-<summary>Config applicationContext.xml</summary>
+<summary>applicationContext.xml</summary>
 	
 #### Code
 ```xml
@@ -444,7 +444,7 @@
 ```
 </details>
 
-#### Config hibernate.cfg.xml
+#### hibernate.cfg.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
@@ -465,7 +465,7 @@
 </hibernate-configuration>
 ```
 
-#### Config configuration.properties
+#### configuration.properties
 ```xml
 # Application
 app.url = http://localhost:8080/SpringWebMVC01/
@@ -476,3 +476,6 @@ jdbc.url                = jdbc:postgresql://localhost:5432/yourdatabasename
 jdbc.username           = postgres
 jdbc.password 		= yourpassword
 ```
+
+Best Regards,<br/>
+Thank you.
