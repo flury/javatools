@@ -22,8 +22,8 @@
 	Windows	  : 	C:\Program Files\PostgreSQL\14\data\pg_hba.conf
 	GNU/Linux :	/etc/postgresql/14/data/pg_hba.conf
 
-3. Change Password ( this restore password in md5 format).
-	ALTER ROLE postgres WITH PASSWORD 'root';
+3. Change Password (this restore password in md5 format).
+	ALTER ROLE postgres WITH PASSWORD 'yourpassword';
 
 4. Make sure you set listen_addresses = '*' in postgresql.conf if you are working non production environment.
 ```
