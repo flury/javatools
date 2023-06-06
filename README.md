@@ -8,55 +8,6 @@
 * Library : Spring Framework, Hibernate ORM, Joda Time, servlet-api 2.5
 * Dependency Management : Maven
 
-<details>
-<summary>Config web.xml</summary>
-	
-#### Code
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-	
-	<display-name>SpringWebMVC01</display-name>
-	
-	<context-param>
-		<param-name>webAppRootKey</param-name>
-		<param-value>SpringWebMVC01</param-value>
-	</context-param>
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath:applicationContext.xml
-		</param-value>
-	</context-param>
-	
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	
-	<servlet>
-	  <servlet-name>dispatcher</servlet-name>
-	  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-	  <init-param>
-	    <param-name>contextConfigLocation</param-name>
-	    <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
-	  </init-param>
-	  <load-on-startup>1</load-on-startup>
-	</servlet>
-	
-	<listener>
-	  <listener-class>
-	  		org.springframework.web.context.request.RequestContextListener
-	  	</listener-class>
-	</listener>
-	
-	<servlet-mapping>
-	  <servlet-name>dispatcher</servlet-name>
-	  <url-pattern>/</url-pattern>
-	</servlet-mapping>
-	
-</web-app>
-```
-</details>
 
 <details>
 <summary>Config pom.xml</summary>
@@ -326,7 +277,60 @@
 ```
 </details>
 
-#### Config dispatcher-servlet.xml
+<details>
+<summary>Config web.xml</summary>
+	
+#### Code
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+	
+	<display-name>SpringWebMVC01</display-name>
+	
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>SpringWebMVC01</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:applicationContext.xml
+		</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<servlet>
+	  <servlet-name>dispatcher</servlet-name>
+	  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	  <init-param>
+	    <param-name>contextConfigLocation</param-name>
+	    <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+	  </init-param>
+	  <load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<listener>
+	  <listener-class>
+	  		org.springframework.web.context.request.RequestContextListener
+	  	</listener-class>
+	</listener>
+	
+	<servlet-mapping>
+	  <servlet-name>dispatcher</servlet-name>
+	  <url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
+```
+</details>
+
+<details>
+<summary>Config dispatcher-servlet.xml</summary>
+	
+#### Code
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -368,8 +372,12 @@
 
 </beans>
 ```
+</details>
 
-#### Config applicationContext.xml
+<details>
+<summary>Config applicationContext.xml</summary>
+	
+#### Code
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -434,6 +442,7 @@
     
 </beans>
 ```
+</details>
 
 #### Config hibernate.cfg.xml
 ```xml
