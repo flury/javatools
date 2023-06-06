@@ -8,7 +8,10 @@
 * Library : Spring Framework, Hibernate ORM, Joda Time, servlet-api 2.5
 * Dependency Management : Maven
 
-#### Config web.xml
+<details>
+<summary>Config web.xml</summary>
+	
+#### Code
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
@@ -53,8 +56,12 @@
 	
 </web-app>
 ```
+</details>
 
-#### Config pom.xml
+<details>
+<summary>Config pom.xml</summary>
+	
+#### Code
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
@@ -317,6 +324,7 @@
   	
 </project>
 ```
+</details>
 
 #### Config dispatcher-servlet.xml
 ```xml
