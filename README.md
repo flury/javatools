@@ -8,7 +8,28 @@
 * Library : Spring Framework, Hibernate ORM, Joda Time, Servlet API 2.5, Encryptable Properties
 * Dependency Management : Maven
 
-## Configuration
+## PostgreSQL Config
+<details>
+<summary>Setting Postgres DB due to the authentication type 10 is not supported</summary>
+
+```xml
+1. Change password_encryption to <strong>md5</strong> in postgresql.conf
+	Windows   : 	C:\Program Files\PostgreSQL\14\data\postgresql.conf
+	GNU/Linux : 	/etc/postgresql/14/data/postgresql.conf
+	
+	
+2. Change scram-sha-256 to <strong>md5</strong> in pg_hba.conf
+	Windows	  : 	C:\Program Files\PostgreSQL\14\data\pg_hba.conf
+	GNU/Linux :	/etc/postgresql/14/data/pg_hba.conf
+
+3. Change Password ( this restore password in md5 format).
+	ALTER ROLE postgres WITH PASSWORD 'root';
+
+4. Make sure you set listen_addresses = '*' in postgresql.conf if you are working non production environment.
+```
+</details>
+	
+## Project Configuration
 <details>
 <summary>pom.xml</summary>
 	
