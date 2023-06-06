@@ -13,12 +13,12 @@
 <summary>Setting Postgres DB due to the authentication type 10 is not supported</summary>
 
 ```xml
-1. Change password_encryption to <strong>md5</strong> in postgresql.conf
+1. Change password_encryption to md5 in postgresql.conf
 	Windows   : 	C:\Program Files\PostgreSQL\14\data\postgresql.conf
 	GNU/Linux : 	/etc/postgresql/14/data/postgresql.conf
 	
 	
-2. Change scram-sha-256 to <strong>md5</strong> in pg_hba.conf
+2. Change scram-sha-256 to md5 in pg_hba.conf
 	Windows	  : 	C:\Program Files\PostgreSQL\14\data\pg_hba.conf
 	GNU/Linux :	/etc/postgresql/14/data/pg_hba.conf
 
