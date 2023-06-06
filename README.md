@@ -5,7 +5,7 @@
 * JDK Runtime : 1.7.0_80
 * Web Server : Apache Tomcat 8.5.0
 * Database : PostgreSQL 13.11
-* Library : Spring Framework, Hibernate ORM, Joda Time, servlet-api 2.5
+* Library : Spring Framework, Hibernate ORM, Joda Time, Servlet API 2.5, Encryptable Properties
 * Dependency Management : Maven
 
 
